@@ -98,7 +98,7 @@ header .logo    /*  5th */
     position: relative;
     height: 30px;
     width: 30px;
-    background: url('../menu.png');
+    background: url('menu.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 30px;
@@ -109,7 +109,7 @@ header .logo    /*  5th */
 
 .toggle.active      /*  7th */
 {
-    background: url('../close.png');
+    background: url('close.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 25px;
