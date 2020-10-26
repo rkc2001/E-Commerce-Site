@@ -1,0 +1,427 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.banner     /*  1st */
+{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    padding: 0 100px;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(#404040,#151415);
+}
+
+.banner::before     /*  2nd */
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 300px;
+    height: 320px;
+    width: 400px;
+    background: #fa215e;
+    z-index: 1;
+    transition: 1s;
+}
+
+.banner.active::before      /*  8th */
+{
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: #151415;
+}
+
+
+.banner::after      /*  3rd */
+{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 100px;
+    height: 200px;
+    width: 400px;
+    background: #aeff0f;
+    z-index: 1;
+    transition: 1s;
+}
+
+.banner.active::after   /*  9th */
+{
+    bottom: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: #151415;
+}
+
+
+header      /*  4th */
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 100px;
+}
+
+header .logo    /*  5th */
+{
+    font-size: 2em;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.5s;
+    transform-origin: right;    
+}
+
+.banner.active .logo    /* (i) */
+{
+    transform: scale(0);
+    transform-origin: left;
+}
+
+.toggle     /*  6th */
+{
+    position: relative;
+    height: 30px;
+    width: 30px;
+    background: url('../menu.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30px;
+    cursor: pointer;
+}
+
+/* 7 - 9 after adding JS */
+
+.toggle.active      /*  7th */
+{
+    background: url('../close.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25px;
+
+}
+
+/* End of Header */
+
+.content            /*  1st */
+{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+    transition: 0.5s;       /*All transition timings are same so as all operations to be in sync-> try changing this to 1s to see the difference*/
+    transform-origin: right;
+}
+
+.banner.active .content    /* (ii) */
+{
+    transform: scale(0);
+    transform-origin: left;
+}
+
+
+.content .contentBox      /*  2nd */
+{
+    max-width: 600px;
+}
+
+.content .contentBox h2     /*  3rd */
+{
+    font-size: 4em;
+    line-height: 1em;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.content .contentBox p      /*  4th */
+{
+    font-size: 1em;
+    color: #fff;
+    margin: 20px 0;
+}
+
+.content .contentBox a      /*  5th */
+{
+    display: inline-block;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 10px 30px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.content .contentBox a:hover    /*  6th */
+{
+    letter-spacing: 4px;
+    background: #fff;
+    color: #111;;
+}
+
+.content .imgBox img    /*  7th */
+{
+    max-width: 100%;
+    min-width: 400px;    
+    max-height: 500px;
+    padding: 50px;
+    border-radius: 50%;
+}
+
+/* End of contents */
+.sci
+{
+    position: absolute;
+    bottom: 20px;
+    /* left: 100px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    transition: 0.5s;
+    transform-origin: right;
+}
+
+.banner.active .sci    /* (iii) */
+{
+    transform: scale(0);
+    transform-origin: left;
+}
+
+.sci li
+{
+    list-style: none;
+}
+
+.sci li a
+{
+    display: inline-block;
+    margin-right: 20px;
+    filter: invert(1);
+    transform: scale(0.6);
+}
+/* .sci li a:hover  Khud ka style
+{
+    transition: 1s;
+    transform: scale(0.7);
+    filter: invert(0);
+} */
+/* End of Social Media */
+
+/* Ab active class lagega to sabko define karo i.e logo,sci,p,....(mentioned as (i),(ii)...) */
+
+.menu
+{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 2;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+    transition-delay: 0s;
+}
+
+.banner.active .menu /* (iv) */
+{
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 1s;
+}
+
+.menu li
+{
+    list-style: none;    
+}
+
+.menu li a
+{
+    text-decoration: none;
+    color: #fff;
+    font-size: 2em;        
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 991px)
+{
+    header
+    {
+        padding: 20px 40px;
+    }
+    header .logo
+    {
+        font-size: 1.5em;
+        font-weight: 900;
+    }
+    .banner
+    {
+        padding: 40px;
+    }
+    .banner::before
+    {
+        top: 100px;
+        left: 0;
+        width: 170px;
+        height: 310px;
+    }
+    .banner::after
+    {
+        bottom: 0;
+        right: 0;
+        width: 80px;
+        height: 60px;
+    }
+    .content
+    {
+        flex-direction: column-reverse;
+        margin: 50px 0;
+    }
+    .content .contentBox
+    {
+        max-width: 100%;
+    }
+    .content .contentBox h2
+    {
+        font-size: 2.5em;
+    }
+
+    .content .imgBox img
+    {
+        max-width: 100%;
+        min-width: 300px;
+        
+    }
+
+}
+
+@media (max-width: 1124px) and (min-width:996px)
+{
+    .banner::after
+    {
+        bottom: 10px;
+        right: 10px;
+        width: 80px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 450px)
+{
+    header .logo
+    {
+        font-size: 1em;
+        font-weight: 900;
+    }
+}
+.container
+{
+    position: relative;
+    height:100vh;
+    width: 100%;
+    overflow: auto;
+    scroll-snap-type: y mandatory;
+}
+.container section
+{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    scroll-snap-align: start;
+
+}
+
+/* ABOUT US */
+.about
+{
+    padding: 40px 100px;
+    /* height: 100%; */
+    background: linear-gradient(#404040,#151415);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin-top: 50px; */  
+}
+
+.about::before
+{
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 0;
+    height: 400px;
+    width: 500px;
+    background: #fa215e;
+    z-index: 1;
+}
+
+.about .contentBox
+{
+    width: 55%;
+    padding: 0 40px;
+    z-index: 2;
+}
+
+.about .contentBox h2
+{
+    font-size: 3.5em;
+    font-weight: 400;
+}
+
+.about .contentBox p
+{
+    font-weight: 300;
+}
+
+.about .imageBox
+{
+    width: 45%;
+    text-align: center;
+}
+
+.about .imageBox img
+{
+    height: 400px;
+    width: 500px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+/* header.down
+{
+    background-color: #fa215e;
+    transition: 2s;
+}
+
+header.down .logo
+{
+    color: #111;
+}
+
+header.down .toggle
+{
+    filter: invert(1);
+} */
